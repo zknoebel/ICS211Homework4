@@ -8,7 +8,7 @@ import java.util.Comparator;
  *
  * @param <E> allows for arrays of any type to be made
  */
-public class MyArrayList<E> implements List211<E> {
+public class MyArrayList<E> implements List211<E>, ListIterator<E> {
 
 	private int placeHolder;
 	private int size = 0;
@@ -184,5 +184,42 @@ public class MyArrayList<E> implements List211<E> {
 	public int size() {
 		return size;
 	}
+
+  @Override
+  public boolean hasNext() {
+    // TODO Auto-generated method stub
+    return false;
+  }
+
+  @Override
+  public boolean hasPrevious() {
+    
+    // TODO Auto-generated method stub
+    return false;
+  }
+
+  @Override
+  public E next() {
+    // TODO Auto-generated method stub
+    return null;
+  }
+
+  @Override
+  public int nextIndex() {
+    // TODO Auto-generated method stub
+    return 0;
+  }
+
+  @Override
+  public E previous() {
+    // TODO Auto-generated method stub
+    return null;
+  }
+
+  @Override
+  public int previousIndex() {
+    // TODO Auto-generated method stub
+    return 0;
+  }
 
 }
