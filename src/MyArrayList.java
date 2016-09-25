@@ -9,7 +9,7 @@ import java.util.Iterator;
  *
  * @param <E> allows for arrays of any type to be made
  */
-public class MyArrayList<E> implements List211<E>, ListIterator<E>, Iterable<E> {
+public class MyArrayList<E> implements List211<E>, Iterable<E> {
 
 	private int placeHolder;
 	private int size = 0;
@@ -24,6 +24,47 @@ public class MyArrayList<E> implements List211<E>, ListIterator<E>, Iterable<E> 
 		data = (E[]) new Object[10];
 	}
 
+	private class ArrayListIterator<E> implements ListIterator<E>{
+
+		@Override
+		public boolean hasNext() {
+			// TODO Auto-generated method stub
+			return false;
+		}
+
+		@Override
+		public boolean hasPrevious() {
+			// TODO Auto-generated method stub
+			return false;
+		}
+
+		@Override
+		public E next() {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public int nextIndex() {
+			// TODO Auto-generated method stub
+			return 0;
+		}
+
+		@Override
+		public E previous() {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public int previousIndex() {
+			// TODO Auto-generated method stub
+			return 0;
+		}
+		
+	}
+	
+	
 	//checks to see if a specific object is in the array and if it is, return the index that it is located at
 	public int indexOf(Object obj) {
 
@@ -186,42 +227,6 @@ public class MyArrayList<E> implements List211<E>, ListIterator<E>, Iterable<E> 
 		return size;
 	}
 
-  @Override
-  public boolean hasNext() {
-    // TODO Auto-generated method stub
-    return false;
-  }
-
-  @Override
-  public boolean hasPrevious() {
-    
-    // TODO Auto-generated method stub
-    return false;
-  }
-
-  @Override
-  public E next() {
-    // TODO Auto-generated method stub
-    return null;
-  }
-
-  @Override
-  public int nextIndex() {
-    // TODO Auto-generated method stub
-    return 0;
-  }
-
-  @Override
-  public E previous() {
-    // TODO Auto-generated method stub
-    return null;
-  }
-
-  @Override
-  public int previousIndex() {
-    // TODO Auto-generated method stub
-    return 0;
-  }
 
   @Override
   public Iterator<E> iterator() {
