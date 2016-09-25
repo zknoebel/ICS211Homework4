@@ -1,6 +1,7 @@
 
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.Iterator;
 
 /**
  * 
@@ -8,7 +9,7 @@ import java.util.Comparator;
  *
  * @param <E> allows for arrays of any type to be made
  */
-public class MyArrayList<E> implements List211<E>, ListIterator<E> {
+public class MyArrayList<E> implements List211<E>, ListIterator<E>, Iterable<E> {
 
 	private int placeHolder;
 	private int size = 0;
@@ -220,6 +221,12 @@ public class MyArrayList<E> implements List211<E>, ListIterator<E> {
   public int previousIndex() {
     // TODO Auto-generated method stub
     return 0;
+  }
+
+  @Override
+  public Iterator<E> iterator() {
+    // TODO Auto-generated method stub
+    return null;
   }
 
 }
