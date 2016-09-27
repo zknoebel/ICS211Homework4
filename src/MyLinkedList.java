@@ -12,7 +12,7 @@ import java.util.Iterator;
  *
  * @param <E> the data conatined by the node
  */
-public class MyLinkedList<E> implements List211<E>, ListIterator<E>, Iterable<E> {
+public class MyLinkedList<E> implements List211<E> {
 
   /**
    * @param finished: used to keep bubbleSort from running on a sorted list
@@ -57,6 +57,50 @@ public class MyLinkedList<E> implements List211<E>, ListIterator<E>, Iterable<E>
 		DLinkedNode(E data) {
 			this.data = data;
 		}
+	}
+	
+	private class LinkedListIterator<E> implements ListIterator<E> {
+	  
+	  public LinkedListIterator (){
+	   
+	  }
+
+    @Override
+    public boolean hasNext() {
+      // TODO Auto-generated method stub
+      return false;
+    }
+
+    @Override
+    public boolean hasPrevious() {
+      // TODO Auto-generated method stub
+      return false;
+    }
+
+    @Override
+    public E next() {
+      // TODO Auto-generated method stub
+      return null;
+    }
+
+    @Override
+    public int nextIndex() {
+      // TODO Auto-generated method stub
+      return 0;
+    }
+
+    @Override
+    public E previous() {
+      // TODO Auto-generated method stub
+      return null;
+    }
+
+    @Override
+    public int previousIndex() {
+      // TODO Auto-generated method stub
+      return 0;
+    }
+	  
 	}
 
 	/**
@@ -391,48 +435,4 @@ public class MyLinkedList<E> implements List211<E>, ListIterator<E>, Iterable<E>
 
 		return size;
 	}
-
-  @Override
-  public boolean hasNext() {
-    // TODO Auto-generated method stub
-    return false;
-  }
-
-  @Override
-  public boolean hasPrevious() {
-    // TODO Auto-generated method stub
-    return false;
-  }
-
-  @Override
-  public E next() {
-    // TODO Auto-generated method stub
-    return null;
-  }
-
-  @Override
-  public int nextIndex() {
-    // TODO Auto-generated method stub
-    return 0;
-  }
-
-  @Override
-  public E previous() {
-    // TODO Auto-generated method stub
-    return null;
-  }
-
-  @Override
-  public int previousIndex() {
-    // TODO Auto-generated method stub
-    return 0;
-  }
-
-  @Override
-  public Iterator<E> iterator() {
-    
-    // TODO Auto-generated method stub
-    return null;
-  }
-
 }
