@@ -12,7 +12,11 @@ import java.util.Iterator;
  *
  * @param <E> the data conatined by the node
  */
+<<<<<<< HEAD
 public class MyLinkedList<E> implements List211<E>, Iterable<E> {
+=======
+public class MyLinkedList<E> implements List211<E> {
+>>>>>>> f42ba920be317cab56044f3130d8f25a493d554e
 
   /**
    * @param finished: used to keep bubbleSort from running on a sorted list
@@ -97,6 +101,50 @@ private class LinkedListIterator<E> implements ListIterator<E>{
 		DLinkedNode(E data) {
 			this.data = data;
 		}
+	}
+	
+	private class LinkedListIterator<E> implements ListIterator<E> {
+	  
+	  public LinkedListIterator (){
+	   
+	  }
+
+    @Override
+    public boolean hasNext() {
+      // TODO Auto-generated method stub
+      return false;
+    }
+
+    @Override
+    public boolean hasPrevious() {
+      // TODO Auto-generated method stub
+      return false;
+    }
+
+    @Override
+    public E next() {
+      // TODO Auto-generated method stub
+      return null;
+    }
+
+    @Override
+    public int nextIndex() {
+      // TODO Auto-generated method stub
+      return 0;
+    }
+
+    @Override
+    public E previous() {
+      // TODO Auto-generated method stub
+      return null;
+    }
+
+    @Override
+    public int previousIndex() {
+      // TODO Auto-generated method stub
+      return 0;
+    }
+	  
 	}
 
 	/**
@@ -431,6 +479,7 @@ private class LinkedListIterator<E> implements ListIterator<E>{
 
 		return size;
 	}
+<<<<<<< HEAD
 
 
   @Override
@@ -439,4 +488,6 @@ private class LinkedListIterator<E> implements ListIterator<E>{
     return null;
   }
 
+=======
+>>>>>>> f42ba920be317cab56044f3130d8f25a493d554e
 }
