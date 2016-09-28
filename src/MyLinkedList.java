@@ -2,8 +2,10 @@
 /**
  * used for sorting methods
  */
+import java.rmi.NoSuchObjectException;
 import java.util.Comparator;
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 /**
  * 
@@ -41,46 +43,61 @@ public class MyLinkedList<E> implements List211<E>, Iterable<E> {
   }
 
   private class LinkedListIterator<E> implements ListIterator<E> {
+    private MyLinkedList<E>.DLinkedNode<E> itrTemp;
+    private int itrIndex = 0;
+
+    LinkedListIterator(){
+
+    }
 
     @Override
     public boolean hasNext() {
-      // TODO Auto-generated method stub
-      return false;
+      return !(itrIndex < 0 || itrIndex >= size);
     }
 
 
     @Override
     public boolean hasPrevious() {
-      // TODO Auto-generated method stub
-      return false;
+      return !(itrIndex <= 0 || itrIndex > size);
     }
 
 
     @Override
     public E next() {
-      // TODO Auto-generated method stub
-      return null;
+      if(itrIndex == size){
+        throw new NoSuchElementException();
+      }
+      else if(itrIndex == 0){
+        itrTemp = (MyLinkedList<E>.DLinkedNode<E>) head;
+      }else{
+        itrTemp = itrTemp.next;
+      }
+      itrIndex ++;
+      return itrTemp.data;
     }
 
 
     @Override
     public int nextIndex() {
-      // TODO Auto-generated method stub
-      return 0;
+      return itrIndex +1;
     }
 
 
     @Override
     public E previous() {
-      // TODO Auto-generated method stub
-      return null;
+      if(itrIndex == 0){
+        throw new NoSuchElementException();
+      }else{
+        itrTemp = itrTemp.prev;
+      }
+      itrIndex ++;
+      return itrTemp.data;     
     }
 
 
     @Override
     public int previousIndex() {
-      // TODO Auto-generated method stub
-      return 0;
+      return itrIndex -1;
     }
 
   }
