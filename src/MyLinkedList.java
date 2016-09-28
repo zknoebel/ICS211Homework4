@@ -1,3 +1,4 @@
+
 /**
  * used for sorting methods
  */
@@ -12,11 +13,8 @@ import java.util.Iterator;
  *
  * @param <E> the data conatined by the node
  */
-<<<<<<< HEAD
+
 public class MyLinkedList<E> implements List211<E>, Iterable<E> {
-=======
-public class MyLinkedList<E> implements List211<E> {
->>>>>>> f42ba920be317cab56044f3130d8f25a493d554e
 
   /**
    * @param finished: used to keep bubbleSort from running on a sorted list
@@ -28,86 +26,21 @@ public class MyLinkedList<E> implements List211<E> {
    * @param size: the length of the linkedList
    * @param dataArray: holds an array of the data variables from the linkedList nodes
    */
-	private boolean finished;
-	private DLinkedNode<E> head;
-	private DLinkedNode<E> tail;
-	private DLinkedNode<E> temp;
-	private E tempData;
-	private int placeHolder;
-	private int size = 0;
-	private Object[] dataArray;
+  private boolean finished;
+  private DLinkedNode<E> head;
+  private DLinkedNode<E> tail;
+  private DLinkedNode<E> temp;
+  private E tempData;
+  private int placeHolder;
+  private int size = 0;
+  private Object[] dataArray;
 
-	MyLinkedList() {
 
-	}
-	
-private class LinkedListIterator<E> implements ListIterator<E>{
+  MyLinkedList() {
 
-	@Override
-	public boolean hasNext() {
-		// TODO Auto-generated method stub
-		return false;
-	}
+  }
 
-	@Override
-	public boolean hasPrevious() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public E next() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public int nextIndex() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public E previous() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public int previousIndex() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-	
-}
-
-	/**
-	 * 
-	 * DLinkedNode
-	 *
-	 * @author Zachery Knoebel
-	 *
-	 * @param <E> data variable
-	 * 
-	 * creates a node that holds an object and can point to the next and previous node in the list
-	 */
-	@SuppressWarnings("hiding")
-	private class DLinkedNode<E> {
-
-		private E data = null;
-		private DLinkedNode<E> next = null;
-		private DLinkedNode<E> prev = null;
-
-		DLinkedNode(E data) {
-			this.data = data;
-		}
-	}
-	
-	private class LinkedListIterator<E> implements ListIterator<E> {
-	  
-	  public LinkedListIterator (){
-	   
-	  }
+  private class LinkedListIterator<E> implements ListIterator<E> {
 
     @Override
     public boolean hasNext() {
@@ -115,11 +48,13 @@ private class LinkedListIterator<E> implements ListIterator<E>{
       return false;
     }
 
+
     @Override
     public boolean hasPrevious() {
       // TODO Auto-generated method stub
       return false;
     }
+
 
     @Override
     public E next() {
@@ -127,11 +62,13 @@ private class LinkedListIterator<E> implements ListIterator<E>{
       return null;
     }
 
+
     @Override
     public int nextIndex() {
       // TODO Auto-generated method stub
       return 0;
     }
+
 
     @Override
     public E previous() {
@@ -139,347 +76,392 @@ private class LinkedListIterator<E> implements ListIterator<E>{
       return null;
     }
 
+
     @Override
     public int previousIndex() {
       // TODO Auto-generated method stub
       return 0;
     }
-	  
-	}
-
-	/**
-	 * adds a node with data 'e' to the end of the list
-	 */
-	@Override
-	public boolean add(E e) {
-
-		DLinkedNode<E> n = new DLinkedNode<E>(e);
-
-		if (size == 0) {
-			head = n;
-			tail = n;
-		} else {
-
-			n.prev = tail;
-			tail.next = n;
-			tail = n;
-		}
-		size++;
-
-		return true;
-	}
-
-	/**
-	 * adds a node wiht data 'e' to the index location
-	 */
-	@Override
-	public void add(int index, E e) {
-
-		if (index < 0 || index > size) {
-
-			throw new IndexOutOfBoundsException();
-		}
-
-		DLinkedNode<E> n = new DLinkedNode<E>(e);
-
-		if (index == size) {
-			add(e);
-		} else if (index == 0) {
-			if (size == 0) {
-				head = n;
-				tail = n;
-			} else {
-
-				head.prev = n;
-				n.next = head;
-				head = n;
-			}
-			size++;
-		} else {
-
-			temp = head;
-
-			for (int i = 0; i < index; i++) {
-				temp = temp.next;
-			}
-
-			n.prev = temp.prev;
-			n.next = temp;
-			temp.prev = n;
-			n.prev.next = n;
-			size++;
-		}
-	}
-
-	/**
-	 * adds a cycle to the list for testing purposes
-	 * 
-	 * @param cycleTo: cycles from the end of the list to the position indicated by cycleTo
-	 */
-	public void addCycle(int cycleTo) {
-
-		temp = head;
-
-		for (int i = 0; i < cycleTo; i++) {
-			temp = temp.next;
-		}
-		tail.next = temp;
-	}
-
-	/**
-	 * inserts data values in dataArray into the data variables in the DLinkedNodes
-	 * this is done so the previously made array sorting methods could be implemented with few changes
-	 */
-	@SuppressWarnings("unchecked")
-	private void arrayToList() {
 
-		temp = head;
+  }
+
+  /**
+   * 
+   * DLinkedNode
+   *
+   * @author Zachery Knoebel
+   *
+   * @param <E> data variable
+   * 
+   * creates a node that holds an object and can point to the next and previous node in the list
+   */
+  @SuppressWarnings("hiding")
+  private class DLinkedNode<E> {
+
+    private E data = null;
+    private DLinkedNode<E> next = null;
+    private DLinkedNode<E> prev = null;
+
+
+    DLinkedNode(E data) {
+      this.data = data;
+    }
+  }
+
+
+  /**
+   * adds a node with data 'e' to the end of the list
+   */
+  @Override
+  public boolean add(E e) {
+
+    DLinkedNode<E> n = new DLinkedNode<E>(e);
+
+    if (size == 0) {
+      head = n;
+      tail = n;
+    }
+    else {
+
+      n.prev = tail;
+      tail.next = n;
+      tail = n;
+    }
+    size++;
 
-		for (int i = 0; i < size; i++) {
-			temp.data = (E) dataArray[i];
-			temp = temp.next;
-		}
-	}
+    return true;
+  }
 
-	/**
-	 * uses bubbleSort method on DLinkedList
-	 */
-	public void bubbleSort(Comparator<? super E> comp) {
 
-		for (int i = 0; i < size - 1; i++) {
+  /**
+   * adds a node wiht data 'e' to the index location
+   */
+  @Override
+  public void add(int index, E e) {
 
-			finished = true;
-			temp = head;
+    if (index < 0 || index > size) {
 
-			for (int j = 0; j < size - 1 - i; j++) {
+      throw new IndexOutOfBoundsException();
+    }
 
-				if (comp.compare(temp.data, temp.next.data) > 0) {
+    DLinkedNode<E> n = new DLinkedNode<E>(e);
 
-					finished = false;
+    if (index == size) {
+      add(e);
+    }
+    else if (index == 0) {
+      if (size == 0) {
+        head = n;
+        tail = n;
+      }
+      else {
 
-					tempData = temp.data;
-					temp.data = temp.next.data;
-					temp.next.data = tempData;
+        head.prev = n;
+        n.next = head;
+        head = n;
+      }
+      size++;
+    }
+    else {
 
-				}
+      temp = head;
 
-				temp = temp.next;
-			}
+      for (int i = 0; i < index; i++) {
+        temp = temp.next;
+      }
 
-			if (finished == true) {
-				break;
-			}
-		}
-	}
+      n.prev = temp.prev;
+      n.next = temp;
+      temp.prev = n;
+      n.prev.next = n;
+      size++;
+    }
+  }
 
-	/**
-	 * checks to make sure the index is within the bounds of the LinkedList
-	 */
-	public void checkIndex(int index) {
 
-		if (index < 0 || index >= size) {
+  /**
+   * adds a cycle to the list for testing purposes
+   * 
+   * @param cycleTo: cycles from the end of the list to the position indicated by cycleTo
+   */
+  public void addCycle(int cycleTo) {
 
-			throw new IndexOutOfBoundsException();
-		}
-	}
+    temp = head;
 
-	/**
-	 * returns data from the DLinkedNode at index
-	 */
-	@Override
-	public E get(int index) {
+    for (int i = 0; i < cycleTo; i++) {
+      temp = temp.next;
+    }
+    tail.next = temp;
+  }
 
-		checkIndex(index);
 
-		temp = head;
+  /**
+   * inserts data values in dataArray into the data variables in the DLinkedNodes this is done so the previously made
+   * array sorting methods could be implemented with few changes
+   */
+  @SuppressWarnings("unchecked")
+  private void arrayToList() {
 
-		for (int i = 0; i < index; i++) {
-			temp = temp.next;
-		}
+    temp = head;
 
-		return temp.data;
-	}
+    for (int i = 0; i < size; i++) {
+      temp.data = (E) dataArray[i];
+      temp = temp.next;
+    }
+  }
 
-	/**
-	 * checks to see if there is a cycle within the DLinkedList
-	 */
-	public boolean hasCycle() {
 
-		DLinkedNode<E> tortoise = head;
-		DLinkedNode<E> hare = head.next;
+  /**
+   * uses bubbleSort method on DLinkedList
+   */
+  public void bubbleSort(Comparator<? super E> comp) {
 
-		try {
-			while (true) {
+    for (int i = 0; i < size - 1; i++) {
 
-				if (tortoise.equals(hare)) {
-					return true;
-				}
+      finished = true;
+      temp = head;
 
-				tortoise = tortoise.next;
-				hare = hare.next.next;
-			}
-		} catch (NullPointerException e) {
-			return false;
-		}
+      for (int j = 0; j < size - 1 - i; j++) {
 
-	}
+        if (comp.compare(temp.data, temp.next.data) > 0) {
 
-	/**
-	 * returns the index of the object obj
-	 * if obj is not in the linkedList then it returns -1
-	 */
-	public int indexOf(Object obj) {
+          finished = false;
 
-		temp = head;
+          tempData = temp.data;
+          temp.data = temp.next.data;
+          temp.next.data = tempData;
 
-		for (int i = 0; i < size; i++) {
+        }
 
-			if (obj.equals(temp.data)) {
-				return i;
-			}
-			temp = temp.next;
-		}
+        temp = temp.next;
+      }
 
-		return -1;
-	}
+      if (finished == true) {
+        break;
+      }
+    }
+  }
 
-	/**
-	 * preforms an insertionSort on the DLinkedList
-	 */
-	@SuppressWarnings("unchecked")
-	public void insertionSort(Comparator<? super E> comp) {
 
-		makeArray();
+  /**
+   * checks to make sure the index is within the bounds of the LinkedList
+   */
+  public void checkIndex(int index) {
 
-		for (int i = 0; i < size - 1; i++) {
+    if (index < 0 || index >= size) {
 
-			placeHolder = i;
+      throw new IndexOutOfBoundsException();
+    }
+  }
 
-			while (comp.compare((E) dataArray[placeHolder], (E) dataArray[placeHolder + 1]) > 0) {
 
-				tempData = (E) dataArray[placeHolder];
-				dataArray[placeHolder] = dataArray[placeHolder + 1];
-				dataArray[placeHolder + 1] = tempData;
+  /**
+   * returns data from the DLinkedNode at index
+   */
+  @Override
+  public E get(int index) {
 
-				if (placeHolder > 0) {
-					placeHolder--;
-				}
-			}
-		}
+    checkIndex(index);
 
-		arrayToList();
-	}
+    temp = head;
 
-	/**
-	 * used to make an array of data from the data in the DlinkedNodes
-   * this is done so the previously made array sorting methods could be implemented with few changes
-	 */
-	@SuppressWarnings("unchecked")
-	private E[] makeArray() {
+    for (int i = 0; i < index; i++) {
+      temp = temp.next;
+    }
 
-		dataArray = new Object[size];
-		temp = head;
+    return temp.data;
+  }
 
-		for (int i = 0; i < size; i++) {
 
-			dataArray[i] = temp.data;
-			temp = temp.next;
-		}
+  /**
+   * checks to see if there is a cycle within the DLinkedList
+   */
+  public boolean hasCycle() {
 
-		return (E[]) dataArray;
-	}
+    DLinkedNode<E> tortoise = head;
+    DLinkedNode<E> hare = head.next;
 
-	/**
-	 * removes a DLinkedNode from the list at index by changing the previous and next pointers of the nodes that point to it
-	 */
-	@Override
-	public E remove(int index) {
+    try {
+      while (true) {
 
-		checkIndex(index);
+        if (tortoise.equals(hare)) {
+          return true;
+        }
 
-		if (index == 0) {
-			head = head.next;
-			head.prev = null;
-		} else if (index == size - 1) {
-			tail = tail.prev;
-			tail.next = null;
-		}
+        tortoise = tortoise.next;
+        hare = hare.next.next;
+      }
+    }
+    catch (NullPointerException e) {
+      return false;
+    }
 
-		else {
+  }
 
-			temp = head;
 
-			for (int i = 0; i < index; i++) {
-				temp = temp.next;
-			}
+  /**
+   * returns the index of the object obj if obj is not in the linkedList then it returns -1
+   */
+  public int indexOf(Object obj) {
 
-			tempData = temp.data;
-			temp.next.prev = temp.prev;
-			temp.prev.next = temp.next;
-		}
+    temp = head;
 
-		size--;
-		return tempData;
-	}
+    for (int i = 0; i < size; i++) {
 
-	/**
-	 * uses a selectionSort on the DLinkedList
-	 */
-	@SuppressWarnings("unchecked")
-	public void selectionSort(Comparator<? super E> comp) {
+      if (obj.equals(temp.data)) {
+        return i;
+      }
+      temp = temp.next;
+    }
 
-		makeArray();
+    return -1;
+  }
 
-		for (int i = 0; i < size - 1; i++) {
 
-			tempData = (E) dataArray[i];
-			placeHolder = i;
+  /**
+   * preforms an insertionSort on the DLinkedList
+   */
+  @SuppressWarnings("unchecked")
+  public void insertionSort(Comparator<? super E> comp) {
 
-			for (int j = i; j < size; j++) {
+    makeArray();
 
-				if (comp.compare(tempData, (E) dataArray[j]) > 0) {
+    for (int i = 0; i < size - 1; i++) {
 
-					tempData = (E) dataArray[j];
-					placeHolder = j;
-				}
-			}
+      placeHolder = i;
 
-			dataArray[placeHolder] = dataArray[i];
-			dataArray[i] = tempData;
-		}
+      while (comp.compare((E) dataArray[placeHolder], (E) dataArray[placeHolder + 1]) > 0) {
 
-		arrayToList();
-	}
-/**
- * changes data value at index to 'e'
- */
-	@Override
-	public E set(int index, E e) {
+        tempData = (E) dataArray[placeHolder];
+        dataArray[placeHolder] = dataArray[placeHolder + 1];
+        dataArray[placeHolder + 1] = tempData;
 
-		checkIndex(index);
+        if (placeHolder > 0) {
+          placeHolder--;
+        }
+      }
+    }
 
-		temp = head;
+    arrayToList();
+  }
 
-		for (int i = 0; i < index; i++) {
 
-			temp = temp.next;
-		}
+  /**
+   * used to make an array of data from the data in the DlinkedNodes this is done so the previously made array sorting
+   * methods could be implemented with few changes
+   */
+  @SuppressWarnings("unchecked")
+  private E[] makeArray() {
 
-		tempData = temp.data;
+    dataArray = new Object[size];
+    temp = head;
 
-		temp.data = e;
-		return tempData;
-	}
+    for (int i = 0; i < size; i++) {
 
-	/**
-	 * returns the length of the DLinkedList
-	 */
-	@Override
-	public int size() {
+      dataArray[i] = temp.data;
+      temp = temp.next;
+    }
 
-		return size;
-	}
-<<<<<<< HEAD
+    return (E[]) dataArray;
+  }
+
+
+  /**
+   * removes a DLinkedNode from the list at index by changing the previous and next pointers of the nodes that point to
+   * it
+   */
+  @Override
+  public E remove(int index) {
+
+    checkIndex(index);
+
+    if (index == 0) {
+      head = head.next;
+      head.prev = null;
+    }
+    else if (index == size - 1) {
+      tail = tail.prev;
+      tail.next = null;
+    }
+
+    else {
+
+      temp = head;
+
+      for (int i = 0; i < index; i++) {
+        temp = temp.next;
+      }
+
+      tempData = temp.data;
+      temp.next.prev = temp.prev;
+      temp.prev.next = temp.next;
+    }
+
+    size--;
+    return tempData;
+  }
+
+
+  /**
+   * uses a selectionSort on the DLinkedList
+   */
+  @SuppressWarnings("unchecked")
+  public void selectionSort(Comparator<? super E> comp) {
+
+    makeArray();
+
+    for (int i = 0; i < size - 1; i++) {
+
+      tempData = (E) dataArray[i];
+      placeHolder = i;
+
+      for (int j = i; j < size; j++) {
+
+        if (comp.compare(tempData, (E) dataArray[j]) > 0) {
+
+          tempData = (E) dataArray[j];
+          placeHolder = j;
+        }
+      }
+
+      dataArray[placeHolder] = dataArray[i];
+      dataArray[i] = tempData;
+    }
+
+    arrayToList();
+  }
+
+
+  /**
+   * changes data value at index to 'e'
+   */
+  @Override
+  public E set(int index, E e) {
+
+    checkIndex(index);
+
+    temp = head;
+
+    for (int i = 0; i < index; i++) {
+
+      temp = temp.next;
+    }
+
+    tempData = temp.data;
+
+    temp.data = e;
+    return tempData;
+  }
+
+
+  /**
+   * returns the length of the DLinkedList
+   */
+  @Override
+  public int size() {
+
+    return size;
+  }
 
 
   @Override
@@ -487,7 +469,4 @@ private class LinkedListIterator<E> implements ListIterator<E>{
     // TODO Auto-generated method stub
     return null;
   }
-
-=======
->>>>>>> f42ba920be317cab56044f3130d8f25a493d554e
 }
