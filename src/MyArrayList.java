@@ -26,46 +26,45 @@ public class MyArrayList<E> implements List211<E>, Iterable<E> {
   }
 
   private class ArrayListIterator<E> implements ListIterator<E> {
-
+    private int position = 0;
+    
+    ArrayListIterator(){
+      
+    }
+    
     @Override
     public boolean hasNext() {
-      // TODO Auto-generated method stub
-      return false;
-    }
+      return !((position + 1) >= size);
+      }
 
 
     @Override
     public boolean hasPrevious() {
-      // TODO Auto-generated method stub
-      return false;
+      return !((position -1) < 0);
     }
 
 
     @Override
     public E next() {
-      // TODO Auto-generated method stub
-      return null;
+      return (E) data[position++];
     }
 
 
     @Override
     public int nextIndex() {
-      // TODO Auto-generated method stub
-      return 0;
+      return position + 1;
     }
 
 
     @Override
     public E previous() {
-      // TODO Auto-generated method stub
-      return null;
+      return (E) data[position--];
     }
 
 
     @Override
     public int previousIndex() {
-      // TODO Auto-generated method stub
-      return 0;
+      return position -1;
     }
 
   }
