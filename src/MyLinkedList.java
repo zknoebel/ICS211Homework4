@@ -44,6 +44,7 @@ public class MyLinkedList<E> implements List211<E>, Iterable<E> {
   }
 
   private class LinkedListIterator<E> implements ListIterator<E> {
+
     private MyLinkedList<E>.DLinkedNode<E> itr;
     private MyLinkedList<E>.DLinkedNode<E> itrTemp;
     private MyLinkedList<E>.DLinkedNode<E> lastReturnedNode;
@@ -54,19 +55,19 @@ public class MyLinkedList<E> implements List211<E>, Iterable<E> {
 
     }
 
-
+    //returns whether the iterator has a next
     @Override
     public boolean hasNext() {
       return position < size;
     }
 
-
+    //returns whether the iterator has a previous
     @Override
     public boolean hasPrevious() {
       return position > 0;
     }
 
-
+    //returns the node at position and increases position
     @Override
     public E next() {
       if (!hasNext()) {
@@ -86,13 +87,13 @@ public class MyLinkedList<E> implements List211<E>, Iterable<E> {
       return itrTemp.data;
     }
 
-
+    //returns position
     @Override
     public int nextIndex() {
       return position;
     }
 
-
+    //returns the previous node in the list and decrements position
     @Override
     public E previous() {
       if (!hasPrevious()) {
@@ -109,25 +110,25 @@ public class MyLinkedList<E> implements List211<E>, Iterable<E> {
       return itr.data;
     }
 
-
+    //returns position -1
     @Override
     public int previousIndex() {
       return position - 1;
     }
 
-
+    //not implemented
     @Override
     public void remove() {
       throw new UnsupportedOperationException();
     }
 
-
+    //not implemented 
     @Override
     public void set(E e) {
       throw new UnsupportedOperationException();
     }
 
-
+    //not implemented
     @Override
     public void add(E e) {
       throw new UnsupportedOperationException();
@@ -514,6 +515,7 @@ public class MyLinkedList<E> implements List211<E>, Iterable<E> {
   }
 
 
+  // provides and iterator function
   @Override
   public ListIterator<E> iterator() {
     return new LinkedListIterator();
