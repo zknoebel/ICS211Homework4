@@ -70,19 +70,17 @@ public class MyArrayList<E> implements List211<E>, Iterable<E> {
 
     @Override
     public void remove() {
-      // TODO Auto-generated method stub
-      
+      MyArrayList.this.remove(position);
     }
 
     @Override
     public void set(E e) {
-      // TODO Auto-generated method stub
-      
+      MyArrayList.this.set(position, e);
     }
 
     @Override
     public void add(E e) {
-      // TODO Auto-generated method stub
+      MyArrayList.this.add(position, e);
       
     }
 

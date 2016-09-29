@@ -1,15 +1,80 @@
+package linkedListPackage;
+/**
+ * 
+ * Main
+ *
+ * @author Zachery Knoebel
+ *
+ */
 
 public class Main {
 
+  /**
+   * This class is used to test the updated or newly created classes in this package.
+   * 
+   * @param args
+   */
+  @SuppressWarnings("unchecked")
   public static void main(String[] args) {
-    
-    MyArrayList aList = new MyArrayList();
-    MyLinkedList lList = new MyLinkedList();
-    
-    ArrayContactList aCList = new ArrayContactList();
-    LinkedContactList lCList = new LinkedContactList();
-    ArrayContactList aCList2 = new ArrayContactList();
-    LinkedContactList lCList2 = new LinkedContactList();
+
+    CompareNumbers comp = new CompareNumbers();
+    MyLinkedList<Integer>[] testList = new MyLinkedList[3];
+    int listLength = 20;
+
+    testList[0] = new MyLinkedList<Integer>();
+    testList[1] = new MyLinkedList<Integer>();
+    testList[2] = new MyLinkedList<Integer>();
+
+    /**
+     * tests the add method used without an index creates three linked lists to be tested
+     */
+    for (int i = listLength; i > 0; i--) {
+      testList[0].add(i);
+      testList[1].add(i);
+      testList[2].add(i);
+    }
+
+    /**
+     * tests the three sort methods
+     */
+    testList[0].bubbleSort(comp);
+    testList[1].insertionSort(comp);
+    testList[2].selectionSort(comp);
+
+    /**
+     * tests the remove and add at index methods
+     */
+    testList[0].remove(0);
+    testList[0].remove(testList[0].size() - 1);
+    testList[0].remove(7);
+    testList[0].add(9, 999);
+
+    /**
+     * prints the three linked lists
+     */
+    for (int i = 0; i < testList[0].size(); i++) {
+      System.out.println(testList[0].get(i));
+    }
+    System.out.println("");
+    for (int i = 0; i < testList[1].size(); i++) {
+      System.out.println(testList[1].get(i));
+    }
+    System.out.println("");
+    for (int i = 0; i < testList[2].size(); i++) {
+      System.out.println(testList[2].get(i));
+    }
+
+    /**
+     * tests indexOf method
+     */
+    System.out.println(testList[2].indexOf(new Integer(18)));
+
+    /**
+     * tests tortoise and hare algorithm
+     */
+    System.out.println("\n" + "TestList[1] has a cycle: " + testList[1].hasCycle());
+    testList[1].addCycle(1);
+    System.out.println("\n" + "TestList[1] has a cycle: " + testList[1].hasCycle());
 
     // Creates an array of Contacts to test the MyArrayList and ContactList classes
     Contact[] contactListTest = new Contact[26];
@@ -66,22 +131,22 @@ public class Main {
     contactListTest[25] = new Contact("Zebadia", "Ford", "Array Listery", "1-648-348-6844", "1-757-681-8645",
         "1-875-234-9765", "ZFord@esnail.com");
 
+    // Creates a contact list to test MyArrayList and ContactList classes
+    ContactList contacts = new ContactList();
 
-    for (int i = 0; i < 25; i++) {
-      aCList.add(contactListTest[i]);
+    // Tests add method without index for MyArrayList class and its implementation of insertionSort method when used in
+    // the ContactList class
+    for (int i = 0; i < 20; i++) {
+      contacts.add(contactListTest[i]);
     }
-    for (int i = 0; i < 25; i++) {
-      lCList.add(contactListTest[i]);
+
+    /**
+     * Prints out first and last names in order of "contacts" (The first 19 are sorted by last name The next 4 are added
+     * in spots 0,6,12,18 Indices 1 and 11 are replaced with testList[24] and testList[25] Index 17 is removed)
+     */
+    for (int i = 0; i < contacts.size(); i++) {
+      System.out.println(i + " " + contacts.get(i).toString());
     }
-    
-    for (Contact c: aCList) {
-      System.out.println(c);
-    }
-    System.out.println("");
-    for (Contact c: lCList) {
-      System.out.println(c);
-    }
-    
+
   }
-
 }

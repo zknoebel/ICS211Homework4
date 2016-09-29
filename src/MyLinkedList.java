@@ -45,7 +45,7 @@ public class MyLinkedList<E> implements List211<E>, Iterable<E> {
 
   private class LinkedListIterator<E> implements ListIterator<E> {
     private MyLinkedList<E>.DLinkedNode<E> itrTemp;
-    private int itrIndex = 0;
+    private int position = 0;
 
     LinkedListIterator(){
 
@@ -53,69 +53,99 @@ public class MyLinkedList<E> implements List211<E>, Iterable<E> {
 
     @Override
     public boolean hasNext() {
-      return !(itrIndex < 0 || itrIndex >= size);
+      return !(position < 0 || position >= size);
     }
 
 
     @Override
     public boolean hasPrevious() {
-      return !(itrIndex <= 0 || itrIndex > size);
+      return !(position <= 0 || position > size);
     }
 
 
     @Override
     public E next() {
-      if(itrIndex == size){
+      if(position == size){
         throw new NoSuchElementException();
       }
-      else if(itrIndex == 0){
+      else if(position == 0){
         itrTemp = (MyLinkedList<E>.DLinkedNode<E>) head;
       }else{
         itrTemp = itrTemp.next;
       }
-      itrIndex ++;
+      position ++;
       return itrTemp.data;
     }
 
 
     @Override
     public int nextIndex() {
-      return itrIndex +1;
+      return position +1;
     }
 
 
     @Override
     public E previous() {
-      if(itrIndex == 0){
+      if(position == 0){
         throw new NoSuchElementException();
       }else{
         itrTemp = itrTemp.prev;
       }
-      itrIndex ++;
+      position ++;
       return itrTemp.data;     
     }
 
 
     @Override
     public int previousIndex() {
-      return itrIndex -1;
+      return position -1;
     }
 
     @Override
     public void remove() {
-      // TODO Auto-generated method stub
-      
+      throw new UnsupportedOperationException();
     }
 
     @Override
     public void set(E e) {
-      // TODO Auto-generated method stub
-      
+
+      itrTemp.data = e;
     }
 
     @Override
     public void add(E e) {
-      // TODO Auto-generated method stub
+
+      if (position< 0 || position > size) {
+
+        throw new IndexOutOfBoundsException();
+      }
+
+      DLinkedNode<E> n = new DLinkedNode<E>(e);
+
+      if (position == size) {
+        MyLinkedList.this.add(e);
+      }
+      else if (position == 0) {
+        if (size == 0) {
+          head = n;
+          tail = n;
+        }
+        else {
+
+          head.prev = n;
+          n.next = head;
+          head = n;
+        }
+        size++;
+      }
+      else {
+
+        n.prev = itrTemp.prev;
+        n.next = itrTemp;
+        itrTemp.prev = n;
+        n.prev.next = n;
+        size++;
+      }
       
     }
 
