@@ -49,9 +49,11 @@ public class MyLinkedList<E> implements List211<E>, Iterable<E> {
     private MyLinkedList<E>.DLinkedNode<E> lastReturnedNode;
     private int position = 0;
 
-    LinkedListIterator(){
+
+    LinkedListIterator() {
 
     }
+
 
     @Override
     public boolean hasNext() {
@@ -67,18 +69,19 @@ public class MyLinkedList<E> implements List211<E>, Iterable<E> {
 
     @Override
     public E next() {
-      if(!hasNext()){
+      if (!hasNext()) {
         throw new NoSuchElementException();
       }
-      else if(position == 0){
-    	itrTemp = (MyLinkedList<E>.DLinkedNode<E>) head;
+      else if (position == 0) {
+        itrTemp = (MyLinkedList<E>.DLinkedNode<E>) head;
         itr = (MyLinkedList<E>.DLinkedNode<E>) head;
         itr = itr.next;
-      }else{
-    	itrTemp = itr;
+      }
+      else {
+        itrTemp = itr;
         itr = itr.next;
       }
-      position ++;
+      position++;
       lastReturnedNode = itrTemp;
       return itrTemp.data;
     }
@@ -92,35 +95,42 @@ public class MyLinkedList<E> implements List211<E>, Iterable<E> {
 
     @Override
     public E previous() {
-      if(!hasPrevious()){
+      if (!hasPrevious()) {
         throw new NoSuchElementException();
-      }else{
+      }
+      else if (position == size) {
+        itr = (MyLinkedList<E>.DLinkedNode<E>) tail;
+      }
+      else {
         itr = itr.prev;
       }
-      position --;
+      position--;
       lastReturnedNode = itr;
-      return itr.data;     
+      return itr.data;
     }
 
 
     @Override
     public int previousIndex() {
-      return position -1;
+      return position - 1;
     }
+
 
     @Override
     public void remove() {
       throw new UnsupportedOperationException();
     }
 
+
     @Override
     public void set(E e) {
       throw new UnsupportedOperationException();
     }
 
+
     @Override
     public void add(E e) {
-      throw new UnsupportedOperationException();     
+      throw new UnsupportedOperationException();
     }
 
   }
@@ -506,6 +516,6 @@ public class MyLinkedList<E> implements List211<E>, Iterable<E> {
 
   @Override
   public ListIterator<E> iterator() {
-    return  new LinkedListIterator();
+    return new LinkedListIterator();
   }
 }

@@ -117,7 +117,7 @@ public class MyLinkedListIteratorTest {
 
         // Make sure we iterated through the correct number of elements...
         assertEquals(MAX, i);
-//i--;
+        
         while (it.hasPrevious()) {
             i--;
             assertEquals(new Integer(i), it.previous());
