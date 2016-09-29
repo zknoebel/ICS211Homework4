@@ -3,13 +3,11 @@ public class Main {
 
   public static void main(String[] args) {
     
-    MyArrayList aList = new MyArrayList();
-    MyLinkedList lList = new MyLinkedList();
-    
+    // Creates the four lists to be tested. The contact lists will sort themselves, the other two will not
     ArrayContactList aCList = new ArrayContactList();
     LinkedContactList lCList = new LinkedContactList();
-    ArrayContactList aCList2 = new ArrayContactList();
-    LinkedContactList lCList2 = new LinkedContactList();
+    MyArrayList<Contact> aCList2 = new MyArrayList<Contact>();
+    MyLinkedList<Contact> lCList2 = new MyLinkedList<Contact>();
 
     // Creates an array of Contacts to test the MyArrayList and ContactList classes
     Contact[] contactListTest = new Contact[26];
@@ -66,14 +64,30 @@ public class Main {
     contactListTest[25] = new Contact("Zebadia", "Ford", "Array Listery", "1-648-348-6844", "1-757-681-8645",
         "1-875-234-9765", "ZFord@esnail.com");
 
-
-    for (int i = 0; i < 25; i++) {
+// adds contacts to the lists
+    for (int i = 0; i < 26; i++) {
       aCList.add(contactListTest[i]);
     }
-    for (int i = 0; i < 25; i++) {
+    for (int i = 0; i < 26; i++) {
       lCList.add(contactListTest[i]);
     }
+    for (int i = 0; i < 26; i++) {
+      aCList2.add(contactListTest[i]);
+    }
+    for (int i = 0; i < 26; i++) {
+      lCList2.add(contactListTest[i]);
+    }
     
+//tests iterator by the use of the special for loop and also prints out the contacts first and last names
+    for (Contact c: aCList2) {
+      System.out.println(c);
+    }
+    System.out.println("");
+    for (Contact c: lCList2) {
+      System.out.println(c);
+    }
+    System.out.println("");
+    System.out.println("");
     for (Contact c: aCList) {
       System.out.println(c);
     }

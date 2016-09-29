@@ -1,3 +1,9 @@
+/**
+ * @author Paul Soulier
+ * 
+ * tests the methods for the LinkedListIterator private class within the MyLinkedList class
+ */
+
 import static org.junit.Assert.*;
 import java.util.NoSuchElementException;
 import java.util.ListIterator;

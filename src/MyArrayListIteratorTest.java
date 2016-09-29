@@ -1,3 +1,10 @@
+/**
+ * This code is the same code written for the MyLinkedListIteratorTest with all of the instances of MyLinkedList
+ * replaced with MyArrayList
+ * 
+ * This is used to test the methods of the private class ArrayListIterator within the class MyArrayList
+ */
+
 import static org.junit.Assert.*;
 import java.util.NoSuchElementException;
 import java.util.ListIterator;
