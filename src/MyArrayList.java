@@ -246,8 +246,8 @@ public class MyArrayList<E> implements List211<E>, Iterable<E> {
 
   @Override
   public Iterator<E> iterator() {
-    // TODO Auto-generated method stub
-    return null;
+    
+    return (Iterator<E>) new ArrayListIterator();
   }
 
 }

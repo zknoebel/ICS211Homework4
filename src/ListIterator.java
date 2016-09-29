@@ -1,4 +1,6 @@
-public interface ListIterator<E> {
+import java.util.Iterator;
+
+public interface ListIterator<E> extends Iterator<E>{
   boolean hasNext(); // Returns true if this list iterator has more elements while traversing in the forward direction.
 
 
