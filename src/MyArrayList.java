@@ -1,7 +1,6 @@
 
 import java.util.Arrays;
 import java.util.Comparator;
-import java.util.Iterator;
 import java.util.ListIterator;
 import java.util.NoSuchElementException;
 
@@ -27,25 +26,26 @@ public class MyArrayList<E> implements List211<E>, Iterable<E> {
     data = (E[]) new Object[10];
   }
 
-  private class ArrayListIterator<E> implements ListIterator<E> {
+  private class ArrayListIterator implements ListIterator<E> {
     private int position = 0;
 
     ArrayListIterator(){
 
     }
 
+    //returns whether the iterator has a next
     @Override
     public boolean hasNext() {
       return position < size;
     }
 
-
+    //returns whether the iterator has a previous
     @Override
     public boolean hasPrevious() {
       return position > 0;
     }
 
-
+    //checks to see if iterator has a next and then returns it
     @Override
     public E next() {
       if(hasNext()){
@@ -55,13 +55,14 @@ public class MyArrayList<E> implements List211<E>, Iterable<E> {
         throw new NoSuchElementException();
       }
     }
-
+    
+    //returns the index at next
     @Override
     public int nextIndex() {
       return position;
     }
 
-
+    //checks to see if the iterator has a previous and then returns it
     @Override
     public E previous() {
       if(hasPrevious()){
@@ -71,22 +72,25 @@ public class MyArrayList<E> implements List211<E>, Iterable<E> {
         throw new NoSuchElementException();
       }
     }
-
+    
+    //returns index of the iterator's previous
     @Override
     public int previousIndex() {
       return position -1;
     }
 
+    //not yet supported
     @Override
     public void remove() {
       throw new UnsupportedOperationException();
     }
 
+    //not yet supported
     @Override
     public void set(E e) {
       throw new UnsupportedOperationException();
     }
-
+    //not yet supported
     @Override
     public void add(E e) {
       throw new UnsupportedOperationException();

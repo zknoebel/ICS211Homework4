@@ -2,9 +2,7 @@
 /**
  * used for sorting methods
  */
-import java.rmi.NoSuchObjectException;
 import java.util.Comparator;
-import java.util.Iterator;
 import java.util.ListIterator;
 import java.util.NoSuchElementException;
 
@@ -43,7 +41,7 @@ public class MyLinkedList<E> implements List211<E>, Iterable<E> {
 
   }
 
-  private class LinkedListIterator<E> implements ListIterator<E> {
+  private class LinkedListIterator implements ListIterator<E> {
 
     private MyLinkedList<E>.DLinkedNode<E> itr;
     private MyLinkedList<E>.DLinkedNode<E> itrTemp;
@@ -119,7 +117,14 @@ public class MyLinkedList<E> implements List211<E>, Iterable<E> {
     //not implemented
     @Override
     public void remove() {
-      throw new UnsupportedOperationException();
+    	if(lastReturnedNode == null){
+    		throw new NoSuchElementException("Last returned node has already"
+    				+ " been removed or does not exist");
+    	}
+    	lastReturnedNode.prev.next = lastReturnedNode.next;
+    	lastReturnedNode.next.prev = lastReturnedNode.prev;
+    	lastReturnedNode = null;
+    	size --;
     }
 
     //not implemented 
