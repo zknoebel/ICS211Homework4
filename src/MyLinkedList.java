@@ -5,6 +5,7 @@
 import java.rmi.NoSuchObjectException;
 import java.util.Comparator;
 import java.util.Iterator;
+import java.util.ListIterator;
 import java.util.NoSuchElementException;
 
 /**
@@ -98,6 +99,24 @@ public class MyLinkedList<E> implements List211<E>, Iterable<E> {
     @Override
     public int previousIndex() {
       return itrIndex -1;
+    }
+
+    @Override
+    public void remove() {
+      // TODO Auto-generated method stub
+      
+    }
+
+    @Override
+    public void set(E e) {
+      // TODO Auto-generated method stub
+      
+    }
+
+    @Override
+    public void add(E e) {
+      // TODO Auto-generated method stub
+      
     }
 
   }

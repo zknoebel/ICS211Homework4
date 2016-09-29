@@ -2,6 +2,7 @@
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.Iterator;
+import java.util.ListIterator;
 
 /**
  * 
@@ -65,6 +66,24 @@ public class MyArrayList<E> implements List211<E>, Iterable<E> {
     @Override
     public int previousIndex() {
       return position -1;
+    }
+
+    @Override
+    public void remove() {
+      // TODO Auto-generated method stub
+      
+    }
+
+    @Override
+    public void set(E e) {
+      // TODO Auto-generated method stub
+      
+    }
+
+    @Override
+    public void add(E e) {
+      // TODO Auto-generated method stub
+      
     }
 
   }
