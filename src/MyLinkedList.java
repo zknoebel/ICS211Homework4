@@ -108,45 +108,12 @@ public class MyLinkedList<E> implements List211<E>, Iterable<E> {
 
     @Override
     public void set(E e) {
-
-      itrTemp.data = e;
+      throw new UnsupportedOperationException();
     }
 
     @Override
     public void add(E e) {
-
-      if (position< 0 || position > size) {
-
-        throw new IndexOutOfBoundsException();
-      }
-
-      DLinkedNode<E> n = new DLinkedNode<E>(e);
-
-      if (position == size) {
-        MyLinkedList.this.add(e);
-      }
-      else if (position == 0) {
-        if (size == 0) {
-          head = n;
-          tail = n;
-        }
-        else {
-
-          head.prev = n;
-          n.next = head;
-          head = n;
-        }
-        size++;
-      }
-      else {
-
-        n.prev = itrTemp.prev;
-        n.next = itrTemp;
-        itrTemp.prev = n;
-        n.prev.next = n;
-        size++;
-      }
-      
+      throw new UnsupportedOperationException();     
     }
 
   }
@@ -531,7 +498,7 @@ public class MyLinkedList<E> implements List211<E>, Iterable<E> {
 
 
   @Override
-  public Iterator<E> iterator() {
-    return (Iterator<E>) new LinkedListIterator();
+  public ListIterator<E> iterator() {
+    return  new LinkedListIterator();
   }
 }

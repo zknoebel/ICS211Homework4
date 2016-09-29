@@ -70,17 +70,17 @@ public class MyArrayList<E> implements List211<E>, Iterable<E> {
 
     @Override
     public void remove() {
-      MyArrayList.this.remove(position);
+      throw new UnsupportedOperationException();
     }
 
     @Override
     public void set(E e) {
-      MyArrayList.this.set(position, e);
+      throw new UnsupportedOperationException();
     }
 
     @Override
     public void add(E e) {
-      MyArrayList.this.add(position, e);
+      throw new UnsupportedOperationException();
       
     }
 
@@ -262,9 +262,9 @@ public class MyArrayList<E> implements List211<E>, Iterable<E> {
 
 
   @Override
-  public Iterator<E> iterator() {
+  public ListIterator<E> iterator() {
     
-    return (Iterator<E>) new ArrayListIterator();
+    return new ArrayListIterator();
   }
 
 }

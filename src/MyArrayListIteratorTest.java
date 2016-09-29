@@ -3,7 +3,7 @@ import java.util.NoSuchElementException;
 import java.util.ListIterator;
 import org.junit.Test;
 
-public class MyLinkedListIteratorTest {
+public class MyArrayListIteratorTest {
     static final int MAX = 10;
 
     static <E> void checkNoNext(ListIterator<E> it) {
