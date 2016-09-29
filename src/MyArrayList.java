@@ -3,6 +3,7 @@ import java.util.Arrays;
 import java.util.Comparator;
 import java.util.Iterator;
 import java.util.ListIterator;
+import java.util.NoSuchElementException;
 
 /**
  * 
@@ -28,40 +29,48 @@ public class MyArrayList<E> implements List211<E>, Iterable<E> {
 
   private class ArrayListIterator<E> implements ListIterator<E> {
     private int position = 0;
-    
+
     ArrayListIterator(){
-      
+
     }
-    
+
     @Override
     public boolean hasNext() {
-      return !((position + 1) >= size);
-      }
+      return position < size;
+    }
 
 
     @Override
     public boolean hasPrevious() {
-      return !((position -1) < 0);
+      return position > 0;
     }
 
 
     @Override
     public E next() {
-      return (E) data[position++];
+      if(hasNext()){
+        return (E) data[position++];
+      }
+      else{
+        throw new NoSuchElementException();
+      }
     }
-
 
     @Override
     public int nextIndex() {
-      return position + 1;
+      return position;
     }
 
 
     @Override
     public E previous() {
-      return (E) data[position--];
+      if(hasPrevious()){
+      return (E) data[--position];
     }
-
+      else{
+        throw new NoSuchElementException();
+      }
+    }
 
     @Override
     public int previousIndex() {
@@ -81,7 +90,7 @@ public class MyArrayList<E> implements List211<E>, Iterable<E> {
     @Override
     public void add(E e) {
       throw new UnsupportedOperationException();
-      
+
     }
 
   }
@@ -263,7 +272,7 @@ public class MyArrayList<E> implements List211<E>, Iterable<E> {
 
   @Override
   public ListIterator<E> iterator() {
-    
+
     return new ArrayListIterator();
   }
 

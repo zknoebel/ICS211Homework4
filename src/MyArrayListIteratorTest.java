@@ -6,9 +6,9 @@ import org.junit.Test;
 public class MyArrayListIteratorTest {
     static final int MAX = 10;
 
-    static <E> void checkNoNext(ListIterator<E> it) {
+    static <E> void checkNoNext(ListIterator<E> itr) {
         try {
-            it.next();
+            itr.next();
             fail("Shouldn't get here.");
         }
         catch (NoSuchElementException e) {
@@ -37,7 +37,7 @@ public class MyArrayListIteratorTest {
      */
     @Test
     public void testEmpty() {
-        MyLinkedList<Integer>   ill = new MyLinkedList<>();
+        MyArrayList<Integer>   ill = new MyArrayList<>();
         ListIterator<Integer>   it = ill.iterator();
 
         assertFalse(it.hasNext());
@@ -52,7 +52,7 @@ public class MyArrayListIteratorTest {
      */
     @Test
     public void testSingle() {
-        MyLinkedList<Integer>   ill = new MyLinkedList<>();
+      MyArrayList<Integer>   ill = new MyArrayList<>();
         ListIterator<Integer>   it;
         Integer                 i;
 
@@ -80,7 +80,7 @@ public class MyArrayListIteratorTest {
      */
     @Test
     public void testBackAndForth() {
-        MyLinkedList<Integer>   ill = new MyLinkedList<>();
+      MyArrayList<Integer>   ill = new MyArrayList<>();
         ListIterator<Integer>   it;
         int                     i;
 
@@ -136,7 +136,7 @@ public class MyArrayListIteratorTest {
      */
     @Test
     public void testFor() {
-        MyLinkedList<Integer>   ill = new MyLinkedList<>();
+      MyArrayList<Integer>   ill = new MyArrayList<>();
 
         // Add some elements...
         for (int i = 0; i < MAX; i++) {
@@ -154,7 +154,7 @@ public class MyArrayListIteratorTest {
 
     @Test
     public void testIndex() {
-        MyLinkedList<Integer>   ill = new MyLinkedList<>();
+      MyArrayList<Integer>   ill = new MyArrayList<>();
         ListIterator<Integer>   it;
         int                     i;
 
@@ -174,6 +174,8 @@ public class MyArrayListIteratorTest {
             assertTrue(i <= MAX);
         }
 
+        assertEquals(ill.size(), it.nextIndex());
+
         while (it.hasPrevious()) {
             i--;
             assertEquals(new Integer(i), ill.get(it.previousIndex()));
@@ -182,5 +184,7 @@ public class MyArrayListIteratorTest {
             // Check for excessive looping/infinite loop...
             assertTrue(i >= 0);
         }
+
+        assertEquals(-1, it.previousIndex());
     }
 }
