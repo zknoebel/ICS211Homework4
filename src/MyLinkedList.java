@@ -44,7 +44,9 @@ public class MyLinkedList<E> implements List211<E>, Iterable<E> {
   }
 
   private class LinkedListIterator<E> implements ListIterator<E> {
+    private MyLinkedList<E>.DLinkedNode<E> itr;
     private MyLinkedList<E>.DLinkedNode<E> itrTemp;
+    private MyLinkedList<E>.DLinkedNode<E> lastReturnedNode;
     private int position = 0;
 
     LinkedListIterator(){
@@ -53,46 +55,51 @@ public class MyLinkedList<E> implements List211<E>, Iterable<E> {
 
     @Override
     public boolean hasNext() {
-      return !(position < 0 || position >= size);
+      return position < size;
     }
 
 
     @Override
     public boolean hasPrevious() {
-      return !(position <= 0 || position > size);
+      return position > 0;
     }
 
 
     @Override
     public E next() {
-      if(position == size){
+      if(!hasNext()){
         throw new NoSuchElementException();
       }
       else if(position == 0){
-        itrTemp = (MyLinkedList<E>.DLinkedNode<E>) head;
+    	itrTemp = (MyLinkedList<E>.DLinkedNode<E>) head;
+        itr = (MyLinkedList<E>.DLinkedNode<E>) head;
+        itr = itr.next;
       }else{
-        itrTemp = itrTemp.next;
+    	itrTemp = itr;
+        itr = itr.next;
       }
       position ++;
+      lastReturnedNode = itrTemp;
       return itrTemp.data;
     }
 
 
     @Override
     public int nextIndex() {
-      return position +1;
+      return position;
     }
 
 
     @Override
     public E previous() {
-      if(position == 0){
+      if(!hasPrevious()){
         throw new NoSuchElementException();
       }else{
-        itrTemp = itrTemp.prev;
+        itr = itr.prev;
       }
-      position ++;
-      return itrTemp.data;     
+      position --;
+      lastReturnedNode = itr;
+      return itr.data;     
     }
 
 
