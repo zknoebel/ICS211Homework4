@@ -80,7 +80,7 @@ public class MyArrayList<E> implements List211<E>, Iterable<E> {
 			return position - 1;
 		}
 
-		// removes item at position
+		// removes item stored at the last returned position
 		@Override
 		public void remove() {
 			if (lastReturnedPosition == null) {

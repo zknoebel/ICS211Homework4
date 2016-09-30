@@ -114,7 +114,7 @@ public class MyLinkedList<E> implements List211<E>, Iterable<E> {
       return position - 1;
     }
 
-
+    // removes DLinkedNode that was last returned
     @Override
     public void remove() {
     	if(lastReturnedNode == null){
@@ -127,16 +127,44 @@ public class MyLinkedList<E> implements List211<E>, Iterable<E> {
     	size --;
     }
 
-    //not yet supported
+    //sets data in node itrTemp to 'e'
     @Override
     public void set(E e) {
-      throw new UnsupportedOperationException();
+
+        itrTemp.data = e;	
     }
 
-    //not yet supported
+//    adds DLinkedNode<E> with data 'e' infront of the DLinkedNode<E>
+//    at "position" 
     @Override
     public void add(E e) {
-      throw new UnsupportedOperationException();
+
+        DLinkedNode<E> n = new DLinkedNode<E>(e);
+
+        if (position == size) {
+          MyLinkedList.this.add(e);
+        }
+        else if (position == 0) {
+          if (size == 0) {
+            head = n;
+            tail = n;
+          }
+          else {
+
+            head.prev = n;
+            n.next = head;
+            head = n;
+          }
+          size++;
+        }
+        else {
+
+          n.prev = itrTemp.prev;
+          n.next = itrTemp;
+          itrTemp.prev = n;
+          n.prev.next = n;
+          size++;
+        }
     }
 
   }
