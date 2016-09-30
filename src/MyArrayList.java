@@ -84,8 +84,8 @@ public class MyArrayList<E> implements List211<E>, Iterable<E> {
 		@Override
 		public void remove() {
 			if (lastReturnedPosition == null) {
-				throw new NoSuchElementException("No element has been previously returned, "
-			+ "or it has already been removed");
+				throw new NoSuchElementException(
+						"No element has been previously returned, " + "or it has already been removed");
 			} else {
 				MyArrayList.this.remove(lastReturnedPosition);
 			}

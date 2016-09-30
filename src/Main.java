@@ -3,7 +3,8 @@ public class Main {
 
 	public static void main(String[] args) {
 
-		// Creates the eight lists to be tested. The contact lists will sort themselves, the other two will
+		// Creates the eight lists to be tested. The contact lists will sort
+		// themselves, the other two will
 		// be sorted by the various sort methods
 		ArrayContactList aCList0 = new ArrayContactList();
 		LinkedContactList lCList0 = new LinkedContactList();
@@ -14,7 +15,8 @@ public class Main {
 		MyArrayList<Contact> aList3 = new MyArrayList<Contact>();
 		MyLinkedList<Contact> lList3 = new MyLinkedList<Contact>();
 
-		// Creates an array of Contacts to test the MyArrayList and ContactList classes
+		// Creates an array of Contacts to test the MyArrayList and ContactList
+		// classes
 		Contact[] contactListTest = new Contact[26];
 		contactListTest[0] = new Contact("AAron", "Black", "Array Listery", "1-234-567-8900", "1-555-432-3456",
 				"1-875-234-9765", "ABlack@esnail.edu");
@@ -40,30 +42,30 @@ public class Main {
 				"1-875-234-9765", "KMcDoogle@esnail.com");
 		contactListTest[11] = new Contact("Lawrence", "Flemming", "Array Listery", "0-555-985-4895", "1-456-456-1687",
 				"1-875-234-9765", "LFlemming@esnail.com");
-		contactListTest[12] =
-				new Contact("Mike", "Glasgo", "Array Listery", "0", "0", "1-875-234-9765", "MGlasgo@esnail.com");
+		contactListTest[12] = new Contact("Mike", "Glasgo", "Array Listery", "0", "0", "1-875-234-9765",
+				"MGlasgo@esnail.com");
 		contactListTest[13] = new Contact("Nedward", "Wentsworth", "Array Listery", "1-440-563-8915", "1-458-832-3456",
 				"1-875-234-9765", "NWentsworth@esnail.com");
 		contactListTest[14] = new Contact("Oskarr", "Squinktersmith", "Array Listery", "1-486-891-1111", "0",
 				"1-875-234-9765", "OSquinktersmith@esnail.com");
-		contactListTest[15] = new Contact("Patricia", "Merkel", "Array Listery", "1-483-332-5612", "0", "1-875-234-9765",
-				"PMerkel@esnail.com");
+		contactListTest[15] = new Contact("Patricia", "Merkel", "Array Listery", "1-483-332-5612", "0",
+				"1-875-234-9765", "PMerkel@esnail.com");
 		contactListTest[16] = new Contact("Qitra", "Sorrento", "Array Listery", "1-878-879-9999", "0", "1-875-234-9765",
 				"QSorrento@esnail.com");
 		contactListTest[17] = new Contact("Ralph", "Flemming", "Array Listery", "1-487-323-5689", "1-888-945-3654",
 				"1-875-234-9765", "RFlemming@esnail.com");
 		contactListTest[18] = new Contact("Samial", "Smith", "Array Listery", "1-857-000-4457", "1-666-908-9900",
 				"1-875-234-9765", "SSmith@esnail.com");
-		contactListTest[19] = new Contact("Tedward", "Wentsworth", "Array Listery", "1-542-789-8888", "0", "1-875-234-9765",
-				"TWentsworth@esnail.com");
-		contactListTest[20] = new Contact("Urdel", "Flippenstock", "Array Listery", "0", "1-555-666-9898", "1-875-234-9765",
-				"UFlippenstock@esnail.com");
-		contactListTest[21] = new Contact("Valentina", "Ferrara", "Array Listery", "1-856-489-3278", "0", "1-875-234-9765",
-				"VFerrara@esnail.com");
-		contactListTest[22] =
-				new Contact("Waldo", "Arlington", "Array Listery", "0", "0", "1-875-234-9765", "WArlington@esnail.com");
-		contactListTest[23] =
-				new Contact("Xeekiel", "Quint", "Array Listery", "0", "0", "1-875-234-9765", "XQuint@esnail.com");
+		contactListTest[19] = new Contact("Tedward", "Wentsworth", "Array Listery", "1-542-789-8888", "0",
+				"1-875-234-9765", "TWentsworth@esnail.com");
+		contactListTest[20] = new Contact("Urdel", "Flippenstock", "Array Listery", "0", "1-555-666-9898",
+				"1-875-234-9765", "UFlippenstock@esnail.com");
+		contactListTest[21] = new Contact("Valentina", "Ferrara", "Array Listery", "1-856-489-3278", "0",
+				"1-875-234-9765", "VFerrara@esnail.com");
+		contactListTest[22] = new Contact("Waldo", "Arlington", "Array Listery", "0", "0", "1-875-234-9765",
+				"WArlington@esnail.com");
+		contactListTest[23] = new Contact("Xeekiel", "Quint", "Array Listery", "0", "0", "1-875-234-9765",
+				"XQuint@esnail.com");
 		contactListTest[24] = new Contact("Yannie", "Alexzandrovich", "Array Listery", "0", "1-842-876-2414",
 				"1-875-234-9765", "YAlexzandrovich@esnail.com");
 		contactListTest[25] = new Contact("Zebadia", "Ford", "Array Listery", "1-648-348-6844", "1-757-681-8645",
@@ -95,18 +97,19 @@ public class Main {
 			lList3.add(contactListTest[i]);
 		}
 
-		//tests iterator by the use of the special for loop and also prints out the contacts first and last names
+		// tests iterator by the use of the special for loop and also prints out
+		// the contacts first and last names
 		System.out.println("");
 		System.out.println("Unsorted MyArrayList of Contacts");
 		System.out.println("________________________________________________");
-		for (Contact c: aList1) {
+		for (Contact c : aList1) {
 			System.out.println(c);
 		}
 		System.out.println("");
 		System.out.println("");
 		System.out.println("Unsorted MyLinkedList of Contacts");
 		System.out.println("________________________________________________");
-		for (Contact c: lList1) {
+		for (Contact c : lList1) {
 			System.out.println(c);
 		}
 		System.out.println("");
@@ -114,70 +117,68 @@ public class Main {
 		System.out.println("");
 		System.out.println("Sorted MyArrayContactList of Contacts");
 		System.out.println("________________________________________________");
-		for (Contact c: aCList0) {
+		for (Contact c : aCList0) {
 			System.out.println(c);
 		}
 		System.out.println("");
 		System.out.println("");
 		System.out.println("Sorted MyLinkedContactList of Contacts");
 		System.out.println("________________________________________________");
-		for (Contact c: lCList0) {
+		for (Contact c : lCList0) {
 			System.out.println(c);
 		}
-		
+
 		ContactComparator comp = new ContactComparator();
-		
+
 		aList1.bubbleSort(comp);
 		aList2.insertionSort(comp);
 		aList3.selectionSort(comp);
-		
 
 		System.out.println("");
 		System.out.println("");
 		System.out.println("Sorted MyArrayList of Contacts (bubble sort)");
 		System.out.println("________________________________________________");
-		for (Contact c: aList1) {
+		for (Contact c : aList1) {
 			System.out.println(c);
 		}
 		System.out.println("");
 		System.out.println("");
 		System.out.println("Sorted MyArrayList of Contacts (insertion sort)");
 		System.out.println("________________________________________________");
-		for (Contact c: aList2) {
+		for (Contact c : aList2) {
 			System.out.println(c);
 		}
 		System.out.println("");
 		System.out.println("");
 		System.out.println("Sorted MyArrayList of Contacts (selection sort)");
 		System.out.println("________________________________________________");
-		for (Contact c: aList3) {
+		for (Contact c : aList3) {
 			System.out.println(c);
 		}
-		
+
 		lList1.bubbleSort(comp);
 		lList2.insertionSort(comp);
 		lList3.selectionSort(comp);
-		
 
 		System.out.println("");
 		System.out.println("");
 		System.out.println("Sorted MyLinkedList of Contacts (bubble sort)");
 		System.out.println("________________________________________________");
-		for (Contact c: lList1) {
+		for (Contact c : lList1) {
 			System.out.println(c);
 		}
 		System.out.println("");
 		System.out.println("");
 		System.out.println("Sorted MyLinkedList of Contacts (insertion sort)");
 		System.out.println("________________________________________________");
-		for (Contact c: lList2) {
+		for (Contact c : lList2) {
 			System.out.println(c);
 		}
 		System.out.println("");
 		System.out.println("");
 		System.out.println("Sorted MyLinkedCList of Contacts (selection sort)");
 		System.out.println("________________________________________________");
-		for (Contact c: lList3) {
+		for (Contact c : lList3) {
 			System.out.println(c);
 		}
 
