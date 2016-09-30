@@ -188,4 +188,87 @@ public class MyLinkedListIteratorTest {
 			assertTrue(i >= 0);
 		}
 	}
+
+	/**
+	 * @author Zachery Knoebel
+	 * 
+	 *         These tests are base on the code from the Paul's MyLinkListTest
+	 *         from homework 3
+	 * 
+	 *         methods added to test add(), remove() and set() methods in the
+	 *         private class ListIterator within the class MyLinkedList
+	 */
+
+	/**
+	 * tests the add method, adding 10 numbers and checking that they are in the
+	 * right spot
+	 */
+	@Test
+	public void testAdd() {
+		MyLinkedList<Integer> ill = new MyLinkedList<>();
+		ListIterator<Integer> itr = ill.iterator();
+
+		// Add elements so we get [0 - MAX-1]
+		for (int i = 9; i > -1; i--) {
+			itr.add(i);
+		}
+
+		// Make sure array list looks good...
+		for (int i = 0; i < MAX; i++) {
+			assertEquals(new Integer(i), ill.get(i));
+		}
+
+		// Make sure size is ok...
+		assertEquals(MAX, ill.size());
+	}
+
+	/**
+	 * makes a list of ten with numbers 0 - 9 sets these values to 2 * their
+	 * value checks to see if it was done correctly
+	 */
+	@Test
+	public void testSet() {
+
+		MyLinkedList<Integer> ill = new MyLinkedList<>();
+		ListIterator<Integer> itr;
+
+		for (int i = 0; i < MAX; i++) {
+			ill.add(i);
+		}
+		itr = ill.iterator();
+		for (int i = 0; i < MAX * 2; i += 2) {
+			itr.next();
+			itr.set(i);
+		}
+		for (int i = 0; i < MAX * 2; i += 2) {
+			assertEquals(new Integer(i), ill.get(i / 2));
+		}
+	}
+
+	/**
+	 * makes a list of 0-9 removes even numbers checks that the correct nodes
+	 * were removed
+	 */
+	@Test
+	public void testRemove() {
+		MyLinkedList<Integer> ill = new MyLinkedList<>();
+		ListIterator<Integer> itr;
+
+		// Add some elements...
+		for (int i = 0; i < MAX; i++) {
+			ill.add(i);
+		}
+		itr = ill.iterator();
+		for (int i = 0; i < MAX / 2; i++) {
+			itr.next();
+			itr.remove();
+			itr.next();
+		}
+		int j = 0;
+		for (int i = 1; i < MAX; i += 2) {
+			assertEquals(new Integer(i), ill.get(j));
+			j++;
+		}
+	}
+
 }

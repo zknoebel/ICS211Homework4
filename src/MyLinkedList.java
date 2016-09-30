@@ -123,17 +123,28 @@ public class MyLinkedList<E> implements List211<E>, Iterable<E> {
 			if (lastReturnedNode == null) {
 				throw new NoSuchElementException(
 						"No element has been previously returned, " + "or it has already been removed");
+			}else{
+				if(lastReturnedNode == head){
+					lastReturnedNode.next.prev = null;
+					head = lastReturnedNode.next;
+				}else if(lastReturnedNode == tail){
+					lastReturnedNode.prev.next = null;
+					tail = lastReturnedNode.prev;
+				}else{
+					lastReturnedNode.prev.next = lastReturnedNode.next;
+					lastReturnedNode.next.prev = lastReturnedNode.prev;
+				}
+					lastReturnedNode = null;
+					position --;
+					size--;
 			}
-			lastReturnedNode.prev.next = lastReturnedNode.next;
-			lastReturnedNode.next.prev = lastReturnedNode.prev;
-			lastReturnedNode = null;
-			size--;
 		}
-
 		// sets data in node itrTemp to 'e'
 		@Override
 		public void set(E e) {
-
+			if(position == 0){
+				itrTemp = head;
+			}
 			itrTemp.data = e;
 		}
 
