@@ -114,12 +114,12 @@ public class MyLinkedList<E> implements List211<E>, Iterable<E> {
       return position - 1;
     }
 
-    //not implemented
+
     @Override
     public void remove() {
     	if(lastReturnedNode == null){
-    		throw new NoSuchElementException("Last returned node has already"
-    				+ " been removed or does not exist");
+    		throw new NoSuchElementException("No element has been previously returned, "
+    				+ "or it has already been removed");
     	}
     	lastReturnedNode.prev.next = lastReturnedNode.next;
     	lastReturnedNode.next.prev = lastReturnedNode.prev;
@@ -127,13 +127,13 @@ public class MyLinkedList<E> implements List211<E>, Iterable<E> {
     	size --;
     }
 
-    //not implemented 
+    //not yet supported
     @Override
     public void set(E e) {
       throw new UnsupportedOperationException();
     }
 
-    //not implemented
+    //not yet supported
     @Override
     public void add(E e) {
       throw new UnsupportedOperationException();
