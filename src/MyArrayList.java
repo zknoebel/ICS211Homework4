@@ -80,7 +80,7 @@ public class MyArrayList<E> implements List211<E>, Iterable<E> {
 			return position - 1;
 		}
 
-
+		// removes item at position
 		@Override
 		public void remove() {
 			if (lastReturnedPosition == null) {
@@ -91,17 +91,16 @@ public class MyArrayList<E> implements List211<E>, Iterable<E> {
 			}
 		}
 
-		// not yet supported
+		// sets item at data[position] to 'e'
 		@Override
 		public void set(E e) {
-			throw new UnsupportedOperationException();
+			data[position] = e;
 		}
 
-		// not yet supported
+		// adds 'e' to the array at index "position"
 		@Override
 		public void add(E e) {
-			throw new UnsupportedOperationException();
-
+			MyArrayList.this.add(position, e);
 		}
 
 	}
