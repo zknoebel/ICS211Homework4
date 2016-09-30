@@ -1,3 +1,19 @@
 README
 
-http://courses.ics.hawaii.edu/ics211f16-2/morea/070.lists/experience-A04.html
+	Testing this code came in two parts. First was the main 
+method which was designed mostly to retest the different sort
+methods from the previous two weeks' assignments. This was
+done by building eight different lists all containing the same
+data in the form of contacts. The unsorted lists were printed
+to show that they were not originally sorted. Then they were
+were sorted using one of each of the sort methods from 
+MyArrayList and MyLinked list, so that each of the six methods
+were tested.
+
+	The second and more thorough part of the testing came in the
+form of JUnit tests created by our TA Paul Soulier. The JUnit
+test that he provided was MyLinkedListIteratorTest. The JUnit
+test MyArrayListIteratorTest is the same as
+MyLinkedListIteratorTest, but I used "Ctrl-f" to replace every
+"MyLinkedList" with "MyArrayList" so that the iterator method
+in the MyArrayList class was tested as well.
