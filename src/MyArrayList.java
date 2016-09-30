@@ -51,7 +51,8 @@ public class MyArrayList<E> implements List211<E>, Iterable<E> {
 		public E next() {
 			if (hasNext()) {
 				lastReturnedPosition = position;
-				return (E) data[position++];
+				position ++;
+				return (E) data[lastReturnedPosition];
 			} else {
 				throw new NoSuchElementException();
 			}
@@ -88,12 +89,16 @@ public class MyArrayList<E> implements List211<E>, Iterable<E> {
 						"No element has been previously returned, " + "or it has already been removed");
 			} else {
 				MyArrayList.this.remove(lastReturnedPosition);
+				if(lastReturnedPosition < position){
+				position --;
+				}
 			}
 		}
 
 		// sets item at data[position] to 'e'
 		@Override
 		public void set(E e) {
+			hasNext();
 			data[position] = e;
 		}
 

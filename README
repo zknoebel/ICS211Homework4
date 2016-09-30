@@ -17,3 +17,10 @@ test MyArrayListIteratorTest is the same as
 MyLinkedListIteratorTest, but I used "Ctrl-f" to replace every
 "MyLinkedList" with "MyArrayList" so that the iterator method
 in the MyArrayList class was tested as well.
+
+	After this was finished, the homework assignment was complete
+however, I decided to implement the add(), remove() and set()
+methods of both Linked list private classes inside MyArrayList
+and MyLinkedList for fun.
+	These were tested with code added to the MyArrayListIterator 
+class and MyLinkedListIterator class.

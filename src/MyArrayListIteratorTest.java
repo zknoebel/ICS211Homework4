@@ -200,108 +200,75 @@ public class MyArrayListIteratorTest {
 	 *         methods added to test add(), remove() and set() methods in the
 	 *         private class ListIterator within the class MyArrayList
 	 */
+
+	/**
+	 * tests the add method, adding 10 numbers and checking that they are in the
+	 * right spot
+	 */
 	@Test
 	public void testAdd() {
-//		MyArrayList<Integer> ial = new MyArrayList<>();
-//
-//		// Add two elements so we get [0, MAX-1]
-//		ial.add(0);
-//		ial.add(MAX - 1);
-//
-//		// Add elements in the middle so we get [0, 1, 2, 3, ..., MAX-1]
-//		for (int i = MAX - 2; i >= 1; i--) {
-//			ial.add(1, i);
-//		}
-//
-//		// Make sure array list looks good...
-//		for (int i = 0; i < MAX; i++) {
-//			assertEquals(new Integer(i), ial.get(i));
-//		}
-//
-//		// Test boundaries (add at index 0 and the very end). Array list
-//		// should contain [-1, 0, 2, 3, ..., MAX]
-//		ial.add(0, -1);
-//		ial.add(ial.size(), MAX);
-//
-//		// Check contents of array list...
-//		for (int i = -1; i < MAX + 1; i++) {
-//			assertEquals(new Integer(i), ial.get(i + 1));
-//		}
-//
-//		// Make sure size is ok...
-//		assertEquals(MAX + 2, ial.size());
+		MyArrayList<Integer> ill = new MyArrayList<>();
+		ListIterator<Integer> itr = ill.iterator();
 
+		// Add elements so we get [0 - MAX-1]
+		for (int i = 9; i > -1; i--) {
+			itr.add(i);
+		}
+
+		// Make sure array list looks good...
+		for (int i = 0; i < MAX; i++) {
+			assertEquals(new Integer(i), ill.get(i));
+		}
+
+		// Make sure size is ok...
+		assertEquals(MAX, ill.size());
 	}
 
+	/**
+	 * makes a list of ten with numbers 0 - 9 sets these values to 2 * their
+	 * value checks to see if it was done correctly
+	 */
 	@Test
 	public void testSet() {
-//		MyArrayList<Integer> ial = new MyArrayList<>();
-//
-//		for (int i = 0; i < MAX; i++) {
-//			ial.add(i);
-//		}
-//
-//		for (int i = 0; i < MAX; i += 2) {
-//			Integer tmp;
-//
-//			// Set a new value and make sure it returns the expected old
-//			// value...
-//			tmp = ial.set(i, i * 2);
-//			assertEquals(new Integer(i), tmp);
-//			assertEquals(new Integer(i * 2), ial.get(i));
-//		}
-//
-//		// Check invalid indices...
-//		try {
-//			assertEquals(null, ial.get(-1));
-//			fail("Bad stuff");
-//		} catch (ArrayIndexOutOfBoundsException e) {
-//		}
-//
-//		try {
-//			assertEquals(null, ial.get(MAX + 10));
-//			fail("Bad stuff");
-//		} catch (ArrayIndexOutOfBoundsException e) {
-//		}
 
+		MyArrayList<Integer> ill = new MyArrayList<>();
+		ListIterator<Integer> itr;
+
+		for (int i = 0; i < MAX; i++) {
+			ill.add(i);
+		}
+		itr = ill.iterator();
+		for (int i = 0; i < MAX * 2; i += 2) {
+			itr.set(i);
+			itr.next();
+		}
+		for (int i = 0; i < MAX * 2; i += 2) {
+			assertEquals(new Integer(i), ill.get(i / 2));
+		}
 	}
-
+	/**
+	 * makes a list of 0-9 removes even numbers checks that the correct nodes
+	 * were removed
+	 */
 	@Test
 	public void testRemove() {
-		/*
-		 * Add code to test removing elements from the array list. These tests
-		 * can be added to separate test case methods (they don't all need to be
-		 * in here). - Test should cover removing from beginning, middle, and
-		 * end. + Test should also verify the size of the array list is correct
-		 * + Test should check for removing an invalid index (negative or too
-		 * big).
-		 */
-//
-//		MyArrayList<Integer> ial = new MyArrayList<>();
-//
-//		for (int i = 10; i > 0; i--) {
-//			ial.add(i);
-//		}
-//		// verify the size of the array list is correct
-//		assertEquals(ial.size(), 10);
-//
-//		// removing from beginning, middle, and end
-//		ial.remove(9);
-//		ial.remove(0);
-//		ial.remove(5);
-//
-//		// Check invalid indices...
-//		try {
-//			assertEquals(null, ial.get(-1));
-//			fail("Bad stuff");
-//		} catch (ArrayIndexOutOfBoundsException e) {
-//		}
-//
-//		try {
-//			assertEquals(null, ial.get(MAX + 10));
-//			fail("Bad stuff");
-//		} catch (ArrayIndexOutOfBoundsException e) {
-//		}
+		MyArrayList<Integer> ill = new MyArrayList<>();
+		ListIterator<Integer> itr;
 
+		// Add some elements...
+		for (int i = 0; i < MAX; i++) {
+			ill.add(i);
+		}
+		itr = ill.iterator();
+		for (int i = 0; i < MAX / 2; i++) {
+			itr.next();
+			itr.remove();
+			itr.next();
+		}
+		int j = 0;
+		for (int i = 1; i < MAX; i += 2) {
+			assertEquals(new Integer(i), ill.get(j));
+			j++;
+		}
 	}
 }

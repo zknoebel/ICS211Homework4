@@ -54,6 +54,7 @@ public class MyLinkedList<E> implements List211<E>, Iterable<E> {
 		private MyLinkedList<E>.DLinkedNode<E> itr;
 		private MyLinkedList<E>.DLinkedNode<E> itrTemp;
 		private MyLinkedList<E>.DLinkedNode<E> lastReturnedNode;
+		private int lastReturnedPosition;
 		private int position = 0;
 
 		LinkedListIterator() {
@@ -78,13 +79,11 @@ public class MyLinkedList<E> implements List211<E>, Iterable<E> {
 			if (!hasNext()) {
 				throw new NoSuchElementException();
 			} else if (position == 0) {
-				itrTemp = (MyLinkedList<E>.DLinkedNode<E>) head;
 				itr = (MyLinkedList<E>.DLinkedNode<E>) head;
-				itr = itr.next;
-			} else {
-				itrTemp = itr;
-				itr = itr.next;
 			}
+			itrTemp = itr;
+			itr = itr.next;
+			lastReturnedPosition = position;
 			position++;
 			lastReturnedNode = itrTemp;
 			return itrTemp.data;
@@ -106,6 +105,7 @@ public class MyLinkedList<E> implements List211<E>, Iterable<E> {
 			} else {
 				itr = itr.prev;
 			}
+			lastReturnedPosition = position;
 			position--;
 			lastReturnedNode = itr;
 			return itr.data;
@@ -123,29 +123,33 @@ public class MyLinkedList<E> implements List211<E>, Iterable<E> {
 			if (lastReturnedNode == null) {
 				throw new NoSuchElementException(
 						"No element has been previously returned, " + "or it has already been removed");
-			}else{
-				if(lastReturnedNode == head){
+			} else {
+				if (lastReturnedNode == head) {
 					lastReturnedNode.next.prev = null;
 					head = lastReturnedNode.next;
-				}else if(lastReturnedNode == tail){
+				} else if (lastReturnedNode == tail) {
 					lastReturnedNode.prev.next = null;
 					tail = lastReturnedNode.prev;
-				}else{
+				} else {
 					lastReturnedNode.prev.next = lastReturnedNode.next;
 					lastReturnedNode.next.prev = lastReturnedNode.prev;
 				}
-					lastReturnedNode = null;
-					position --;
-					size--;
+				lastReturnedNode = null;
+				if (lastReturnedPosition < position) {
+					position--;
+				}
+				size--;
 			}
 		}
+
 		// sets data in node itrTemp to 'e'
 		@Override
 		public void set(E e) {
-			if(position == 0){
-				itrTemp = head;
+			hasNext();
+			if (position == 0) {
+				itr = head;
 			}
-			itrTemp.data = e;
+			itr.data = e;
 		}
 
 		// adds DLinkedNode<E> with data 'e' infront of the DLinkedNode<E>
