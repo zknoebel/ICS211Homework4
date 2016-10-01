@@ -106,6 +106,7 @@ public class MyArrayList<E> implements List211<E>, Iterable<E> {
 		@Override
 		public void add(E e) {
 			MyArrayList.this.add(position, e);
+			position ++;
 		}
 
 	}

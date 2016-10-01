@@ -211,7 +211,7 @@ public class MyArrayListIteratorTest {
 		ListIterator<Integer> itr = ill.iterator();
 
 		// Add elements so we get [0 - MAX-1]
-		for (int i = 9; i > -1; i--) {
+		for (int i = 0; i < MAX; i++) {
 			itr.add(i);
 		}
 
@@ -239,8 +239,8 @@ public class MyArrayListIteratorTest {
 		}
 		itr = ill.iterator();
 		for (int i = 0; i < MAX * 2; i += 2) {
+      itr.next();
 			itr.set(i);
-			itr.next();
 		}
 		for (int i = 0; i < MAX * 2; i += 2) {
 			assertEquals(new Integer(i), ill.get(i / 2));
