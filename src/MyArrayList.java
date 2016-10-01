@@ -18,6 +18,7 @@ public class MyArrayList<E> implements List211<E>, Iterable<E> {
 	private E[] data;
 	private E e;
 	private boolean finished;
+	private boolean setRemoveState = false;
 
 	// Starts with and empty array of ten
 	@SuppressWarnings("unchecked")
@@ -51,7 +52,8 @@ public class MyArrayList<E> implements List211<E>, Iterable<E> {
 		public E next() {
 			if (hasNext()) {
 				lastReturnedPosition = position;
-				position ++;
+				position++;
+				setRemoveState = true;
 				return (E) data[lastReturnedPosition];
 			} else {
 				throw new NoSuchElementException();
@@ -69,6 +71,7 @@ public class MyArrayList<E> implements List211<E>, Iterable<E> {
 		public E previous() {
 			if (hasPrevious()) {
 				lastReturnedPosition = position - 1;
+				setRemoveState = true;
 				return (E) data[--position];
 			} else {
 				throw new NoSuchElementException();
@@ -84,29 +87,33 @@ public class MyArrayList<E> implements List211<E>, Iterable<E> {
 		// removes item stored at the last returned position
 		@Override
 		public void remove() {
-			if (lastReturnedPosition == null) {
-				throw new NoSuchElementException(
-						"No element has been previously returned, " + "or it has already been removed");
-			} else {
+			if (setRemoveState) {
 				MyArrayList.this.remove(lastReturnedPosition);
-				if(lastReturnedPosition < position){
-				position --;
+				setRemoveState = false;
+				if (lastReturnedPosition < position) {
+					position--;
 				}
+			} else {
+				throw new IllegalStateException();
 			}
 		}
 
 		// sets item at data[position] to 'e'
 		@Override
 		public void set(E e) {
-			hasNext();
-			data[position] = e;
+			if (setRemoveState) {
+				data[lastReturnedPosition] = e;
+			} else {
+				throw new IllegalStateException();
+			}
 		}
 
 		// adds 'e' to the array at index "position"
 		@Override
 		public void add(E e) {
 			MyArrayList.this.add(position, e);
-			position ++;
+			position++;
+			setRemoveState = false;
 		}
 
 	}

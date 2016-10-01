@@ -239,13 +239,14 @@ public class MyArrayListIteratorTest {
 		}
 		itr = ill.iterator();
 		for (int i = 0; i < MAX * 2; i += 2) {
-      itr.next();
+			itr.next();
 			itr.set(i);
 		}
 		for (int i = 0; i < MAX * 2; i += 2) {
 			assertEquals(new Integer(i), ill.get(i / 2));
 		}
 	}
+
 	/**
 	 * makes a list of 0-9 removes even numbers checks that the correct nodes
 	 * were removed
